@@ -1,0 +1,44 @@
+/*!
+ * dyCalendar is a JavaScript library for creating Calendar.
+ *
+ * Author: Yusuf Shakeel
+ * https://github.com/yusufshakeel
+ *
+ * GitHub Link: https://github.com/yusufshakeel/dyCalendarJS
+ *
+ * MIT license
+ * Copyright (c) 2016 Yusuf Shakeel
+ *
+ * Date: 2014-08-17 sunday
+ */
+
+.dycalendar-month-container {
+    padding : 10px;
+    width : 210px;
+    height : 240px;
+    text-align : center;
+    border : 1px solid #eee;
+    font-size : 16px;
+    font-family : Arial;
+    color : #fff;
+    background-color: #2bb063;
+}
+
+.dycalendar-month-container > div{
+    padding : 0;
+    margin-bottom : 10px;
+}
+
+.dycalendar-span-month-year {
+    margin : 5px;
+}
+
+.dycalendar-body > table > tr > td {
+    padding : 5px;
+}
+
+.dycalendar-today-date {
+    background-color: #fff;
+    color : #111;
+    border-radius: 5px;
+}
