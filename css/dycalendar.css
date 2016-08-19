@@ -25,11 +25,8 @@
  *-------------------------------------------------*/
 .dycalendar-month-container {
     padding : 10px;
-    width : 210px;
-    height : 240px;
     text-align : center;
     border : 1px solid #eee;
-    font-size : 16px;
     font-family : Arial;
 }
 
@@ -53,6 +50,41 @@
 }
 
 /*================================== MONTH CALENDAR ENS HERE ===============*/
+
+
+
+/*================================== TODAY CALENDAR ========================*/
+/*
+ * today calendar style
+ *-------------------------------------------------*/
+.dycalendar-today-container {
+    padding : 10px;
+    text-align : center;
+    border : 1px solid #eee;
+    font-family : Arial;
+}
+
+.dycalendar-today-container div{
+    padding : 0;
+    margin-bottom : 10px;
+}
+
+.dycalendar-today-container .dycalendar-span-day {
+    font-size : 110%;
+}
+
+.dycalendar-today-container .dycalendar-span-date {
+    font-size : 250%;
+}
+
+.dycalendar-today-container .dycalendar-span-month-year {
+    font-size : 90%
+}
+
+/*================================== MONTH CALENDAR ENS HERE ===============*/
+
+
+
 
 /*================================== DYCALENDAR SKIN =======================*/
 

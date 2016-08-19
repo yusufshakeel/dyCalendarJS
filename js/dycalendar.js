@@ -45,7 +45,7 @@
      *
      * @param object data   this contains the calendar data
      * @param object option this is the settings object
-     * @return html 
+     * @return html
      */
     function createMonthTable(data, option) {
 
@@ -113,7 +113,7 @@
     }
 
     /**
-     * this function will draw Calendar Table
+     * this function will draw Calendar Month Table
      *
      * @param object data   this contains the calendar data
      * @param object option this is the settings object
@@ -131,6 +131,8 @@
         //calendar container
         container = global.document.createElement("div");
         container.setAttribute("class", "dycalendar-month-container");
+
+        //-------------------------- Header ------------------
 
         //header div
         div = global.document.createElement("div");
@@ -151,12 +153,93 @@
         //add header div to container
         container.appendChild(div);
 
+        //-------------------------- Body ------------------
+
         //body div
         div = global.document.createElement("div");
         div.setAttribute("class", "dycalendar-body");
         div.appendChild(table);
 
         //add body div to container div
+        container.appendChild(div);
+
+        //return container
+        return container;
+    }
+
+    /**
+     * this function will draw Calendar Today
+     *
+     * @param object data   this contains the calendar data
+     * @param object option this is the settings object
+     * @return html
+     */
+    function drawCalendarToday(data, option) {
+
+        var
+            div, container, elem;
+
+        //calendar container
+        container = global.document.createElement("div");
+        container.setAttribute("class", "dycalendar-today-container");
+
+        //-------------------------- Header ------------------
+
+        //header div
+        div = global.document.createElement("div");
+        div.setAttribute("class", "dycalendar-header");
+
+        //day span
+        elem = global.document.createElement("span");
+        elem.setAttribute("class", "dycalendar-span-day");
+        if (option.dayformat === "ddd") {
+            elem.innerHTML = dayName.ddd[data.today.dayIndex];
+        } else if (option.dayformat === "full") {
+            elem.innerHTML = dayName.full[data.today.dayIndex];
+        }
+
+        //add day span to footer div
+        div.appendChild(elem);
+
+        //add header div to container
+        container.appendChild(div);
+
+        //-------------------------- Body ------------------
+
+        //body div
+        div = global.document.createElement("div");
+        div.setAttribute("class", "dycalendar-body");
+
+        //date span
+        elem = global.document.createElement("span");
+        elem.setAttribute("class", "dycalendar-span-date");
+        elem.innerHTML = data.today.date;
+
+        //add date span to body div
+        div.appendChild(elem);
+
+        //add body div to container
+        container.appendChild(div);
+
+        //-------------------------- Footer ------------------
+
+        //footer div
+        div = global.document.createElement("div");
+        div.setAttribute("class", "dycalendar-footer");
+
+        //month span
+        elem = global.document.createElement("span");
+        elem.setAttribute("class", "dycalendar-span-month-year");
+        if (option.monthformat === "mmm") {
+            elem.innerHTML = data.monthName + " " + data.year;
+        } else if (option.monthformat === "full") {
+            elem.innerHTML = data.monthNameFull + " " + data.year;
+        }
+
+        //add month span to footer div
+        div.appendChild(elem);
+
+        //add footer div to container
         container.appendChild(div);
 
         //return container
@@ -260,6 +343,7 @@
      *  month : "integer"       //(optional) value 0-11, where 0 = January, ... 11 = December (default current month)
      *  year : "integer"        //(optional) example 1990. (default current year)
      *  monthformat : "full"    //(optional) values: "mmm|full" (default "full")
+     *  dayformat : "full"      //(optional) values: "ddd|full" (default "full")
      *  highlighttoday : boolean    //(optional) (default false) if true will highlight today's date
      * }
      *
@@ -284,6 +368,7 @@
                 month : dateObj.getMonth(),
                 year : dateObj.getFullYear(),
                 monthformat : "full",
+                dayformat : "full",
                 highlighttoday : false
             },
 
@@ -310,7 +395,10 @@
         //get calendar HTML
         switch (option.type) {
         case "today":
-            calendarHTML = "<p>Today</p>";
+            //get calendar detail
+            calendar = getCalendar(option.year, option.month);
+            //get calendar html
+            calendarHTML = drawCalendarToday(calendar, option);
             break;
 
         case "month":
