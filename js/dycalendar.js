@@ -43,7 +43,9 @@
     /**
      * this function will create month table.
      *
-     *
+     * @param object data   this contains the calendar data
+     * @param object option this is the settings object
+     * @return html 
      */
     function createMonthTable(data, option) {
 
