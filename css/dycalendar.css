@@ -12,6 +12,17 @@
  * Date: 2014-08-17 sunday
  */
 
+.dycalendar-container {
+    display: inline-block;
+}
+
+/*================================== MONTH CALENDAR =========================*/
+
+/*================================== MONTH CALENDAR DEFAULT
+
+/*
+ * month calendar style
+ *-------------------------------------------------*/
 .dycalendar-month-container {
     padding : 10px;
     width : 210px;
@@ -20,25 +31,99 @@
     border : 1px solid #eee;
     font-size : 16px;
     font-family : Arial;
-    color : #fff;
-    background-color: #2bb063;
 }
 
-.dycalendar-month-container > div{
+.dycalendar-month-container div{
     padding : 0;
     margin-bottom : 10px;
 }
 
-.dycalendar-span-month-year {
+.dycalendar-month-container .dycalendar-span-month-year {
     margin : 5px;
 }
 
-.dycalendar-body > table > tr > td {
+.dycalendar-month-container .dycalendar-body > table > tr > td {
     padding : 5px;
 }
 
-.dycalendar-today-date {
+.dycalendar-month-container .dycalendar-today-date {
+    background-color: #111;
+    color : #fff;
+    border-radius: 2px;
+}
+
+/*================================== MONTH CALENDAR ENS HERE ===============*/
+
+/*================================== DYCALENDAR SKIN =======================*/
+
+/*
+ * calendar skin  (skin-black)
+ *-------------------------------------------------*/
+.dycalendar-container.skin-black {
+    color : #fff;
+    background-color: #111;
+}
+
+.dycalendar-container.skin-black .dycalendar-today-date {
     background-color: #fff;
     color : #111;
-    border-radius: 5px;
+    border-radius: 2px;
 }
+
+/*
+ * calendar skin  (skin-blue)
+ *-------------------------------------------------*/
+.dycalendar-container.skin-blue {
+    color : #fff;
+    background-color: #3c99d3;
+}
+
+.dycalendar-container.skin-blue .dycalendar-today-date {
+    background-color: #fff;
+    color : #3c99d3;
+    border-radius: 2px;
+}
+
+/*
+ * calendar skin  (skin-green)
+ *-------------------------------------------------*/
+.dycalendar-container.skin-green {
+    color : #fff;
+    background-color: #2bb063;
+}
+
+.dycalendar-container.skin-green .dycalendar-today-date {
+    background-color: #fff;
+    color : #2bb063;
+    border-radius: 2px;
+}
+
+/*
+ * calendar skin  (skin-red)
+ *-------------------------------------------------*/
+.dycalendar-container.skin-red {
+    color : #fff;
+    background-color: #e94d40;
+}
+
+.dycalendar-container.skin-red .dycalendar-today-date {
+    background-color: #fff;
+    color : #e94d40;
+    border-radius: 2px;
+}
+
+/*
+ * calendar skin  (skin-spacegray)
+ *-------------------------------------------------*/
+.dycalendar-container.skin-spacegray {
+    color : #fff;
+    background-color: #343d46;
+}
+
+.dycalendar-container.skin-spacegray .dycalendar-today-date {
+    background-color: #fff;
+    color : #343d46;
+    border-radius: 2px;
+}
+
+/*================================== DYCALENDAR SKIN ENDS HERE =============*/

@@ -41,17 +41,14 @@
         };
 
     /**
-     * this function will draw Calendar Table
+     * this function will create month table.
      *
-     * @param object data   this contains the calendar data
-     * @param object option this is the settings object
-     * @return html
+     *
      */
-    function drawCalendarMonthTable(data, option) {
+    function createMonthTable(data, option) {
 
         var
             table, tr, td,
-            div, container, elem,
             r, c, count;
 
         table = global.document.createElement("table");
@@ -96,8 +93,8 @@
             tr = global.document.createElement("tr");
             for(c = 0; c <= 6; c = c + 1) {
                 if (count > data.totaldays) {
-                    r = 10; //to exit the outer loop
-                    break;
+                    table.appendChild(tr);
+                    return table;
                 }
                 td = global.document.createElement('td');
                 td.innerHTML = count;
@@ -109,6 +106,25 @@
             }
             table.appendChild(tr);
         }
+
+        return table;
+    }
+
+    /**
+     * this function will draw Calendar Table
+     *
+     * @param object data   this contains the calendar data
+     * @param object option this is the settings object
+     * @return html
+     */
+    function drawCalendarMonthTable(data, option) {
+
+        var
+            table,
+            div, container, elem;
+
+        //get table
+        table = createMonthTable(data, option);
 
         //calendar container
         container = global.document.createElement("div");
@@ -298,6 +314,7 @@
         case "month":
             //get calendar detail
             calendar = getCalendar(option.year, option.month);
+            //get calendar html
             calendarHTML = drawCalendarMonthTable(calendar, option);
             break;
 
