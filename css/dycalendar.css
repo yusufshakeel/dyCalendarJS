@@ -136,6 +136,22 @@
 }
 
 /*
+ * calendar skin  (skin-purple)
+ *-------------------------------------------------*/
+.dycalendar-container.skin-purple {
+    color : #fff;
+    background-color: #975ea4;
+    border : 0;
+}
+
+.dycalendar-container.skin-purple .dycalendar-today-date,
+.dycalendar-target-date {
+    background-color: #fff;
+    color : #975ea4;
+    border-radius: 2px;
+}
+
+/*
  * calendar skin  (skin-red)
  *-------------------------------------------------*/
 .dycalendar-container.skin-red {
