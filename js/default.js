@@ -29,3 +29,38 @@ dycalendar.draw({
      highlighttoday: true,
      monthformat: "full"
 });
+
+//today calendar - with skin
+dycalendar.draw({
+     target: '#dycalendar-today-with-skin',
+     type: 'today',
+     dayformat: "ddd",
+     monthformat: "mmm"
+});
+
+//today calendar - with skin and shadow
+dycalendar.draw({
+     target: '#dycalendar-today-with-skin-shadow',
+     type: 'today',
+     dayformat: "full",
+     monthformat: "full"
+});
+
+//month calendar - default current month - with skin
+dycalendar.draw({
+     target: '#dycalendar-month-with-skin',
+     type: 'month',
+     highlighttoday: true,
+     monthformat: "mmm"
+});
+
+//month calendar - with skin and shadow
+dycalendar.draw({
+     target: '#dycalendar-month-with-skin-shadow',
+     type: 'month',
+     month: 9,
+     year: 1990,
+     date: 21,
+     monthformat: "full",
+     highlighttargetdate : true
+});

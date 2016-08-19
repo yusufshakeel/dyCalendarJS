@@ -84,6 +84,9 @@
             if (data.today.date === count && data.today.monthIndex === data.monthIndex && option.highlighttoday === true) {
                 td.setAttribute("class", "dycalendar-today-date");
             }
+            if (option.date === count && option.month === data.monthIndex && option.highlighttargetdate === true) {
+                td.setAttribute("class", "dycalendar-target-date");
+            }
             tr.appendChild(td);
             count = count + 1;
             c = c + 1;
@@ -102,6 +105,9 @@
                 td.innerHTML = count;
                 if (data.today.date === count && data.today.monthIndex === data.monthIndex && option.highlighttoday === true) {
                     td.setAttribute("class", "dycalendar-today-date");
+                }
+                if (option.date === count && option.month === data.monthIndex && option.highlighttargetdate === true) {
+                    td.setAttribute("class", "dycalendar-target-date");
                 }
                 count = count + 1;
                 tr.appendChild(td);
@@ -342,9 +348,11 @@
      *  type : "calendar-type"  //(optional) values: "today|month" (default "today")
      *  month : "integer"       //(optional) value 0-11, where 0 = January, ... 11 = December (default current month)
      *  year : "integer"        //(optional) example 1990. (default current year)
+     *  date : "integer"        //(optional) example 1-31. (default current date)
      *  monthformat : "full"    //(optional) values: "mmm|full" (default "full")
      *  dayformat : "full"      //(optional) values: "ddd|full" (default "full")
      *  highlighttoday : boolean    //(optional) (default false) if true will highlight today's date
+     *  highlighttargetdate : boolean   //(optional) (default false) if true will highlight targeted date of the month year
      * }
      *
      * @param object option     user preferences
@@ -367,9 +375,11 @@
                 type : "today",
                 month : dateObj.getMonth(),
                 year : dateObj.getFullYear(),
+                date : dateObj.getDate(),
                 monthformat : "full",
                 dayformat : "full",
-                highlighttoday : false
+                highlighttoday : false,
+                highlighttargetdate : false
             },
 
             //variables for creating calendar

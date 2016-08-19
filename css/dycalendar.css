@@ -96,7 +96,8 @@
     border : 0;
 }
 
-.dycalendar-container.skin-black .dycalendar-today-date {
+.dycalendar-container.skin-black .dycalendar-today-date,
+.dycalendar-target-date {
     background-color: #fff;
     color : #111;
     border-radius: 2px;
@@ -111,7 +112,8 @@
     border : 0;
 }
 
-.dycalendar-container.skin-blue .dycalendar-today-date {
+.dycalendar-container.skin-blue .dycalendar-today-date,
+.dycalendar-target-date {
     background-color: #fff;
     color : #3c99d3;
     border-radius: 2px;
@@ -126,7 +128,8 @@
     border : 0;
 }
 
-.dycalendar-container.skin-green .dycalendar-today-date {
+.dycalendar-container.skin-green .dycalendar-today-date,
+.dycalendar-target-date {
     background-color: #fff;
     color : #2bb063;
     border-radius: 2px;
@@ -141,7 +144,8 @@
     border : 0;
 }
 
-.dycalendar-container.skin-red .dycalendar-today-date {
+.dycalendar-container.skin-red .dycalendar-today-date,
+.dycalendar-target-date {
     background-color: #fff;
     color : #e94d40;
     border-radius: 2px;
@@ -156,7 +160,8 @@
     border : 0;
 }
 
-.dycalendar-container.skin-spacegray .dycalendar-today-date {
+.dycalendar-container.skin-spacegray .dycalendar-today-date,
+.dycalendar-target-date {
     background-color: #fff;
     color : #343d46;
     border-radius: 2px;
