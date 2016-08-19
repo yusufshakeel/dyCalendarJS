@@ -11,7 +11,7 @@
  *
  * Date: 2014-08-17 sunday
  */
-
+/*! dyCalendarJS | (c) 2016 Yusuf Shakeel | https://github.com/yusufshakeel/dyCalendarJS */
 (function(global) {
 
     "use strict";
@@ -389,8 +389,6 @@
 
         //extend user options with predefined options
         option = extendSource(option, defaults);
-
-        global.console.log(option);
 
         //get calendar HTML
         switch (option.type) {
