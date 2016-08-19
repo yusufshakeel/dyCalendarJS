@@ -16,7 +16,8 @@
 dycalendar.draw({
      target: '#dycalendar-today',
      type: 'today',
-     dayformat: "full"
+     dayformat: "full",
+     monthformat: "full"
 });
 
 //month calendar
