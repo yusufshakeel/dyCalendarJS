@@ -64,3 +64,11 @@ dycalendar.draw({
      monthformat: "full",
      highlighttargetdate : true
 });
+
+//month calendar - with skin and shadow - target class
+dycalendar.draw({
+     target: '.dycalendar-month',
+     type: 'month',
+     monthformat: "full",
+     highlighttargetdate : true
+});

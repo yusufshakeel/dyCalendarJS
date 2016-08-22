@@ -392,11 +392,13 @@
             targetedClass,
 
             //other variables
-            i, len;
+            i, len, elem, elemArr;
 
         //find target element by
         if (option.target[0] === "#") {
             targetedElementBy = "id";
+        } else if (option.target[0] === ".") {
+            targetedElementBy = "class";
         }
         option.target = option.target.substring(1);
 
@@ -426,8 +428,14 @@
         //draw calendar
         if (targetedElementBy === "id") {
 
-            document.getElementById(option.target).innerHTML = null;
-            document.getElementById(option.target).appendChild(calendarHTML);
+            document.getElementById(option.target).innerHTML = calendarHTML.outerHTML;
+
+        } else if (targetedElementBy === "class") {
+
+            elemArr = document.getElementsByClassName(option.target);
+            for (i = 0, len = elemArr.length; i < len; i = i + 1) {
+                elemArr[i].innerHTML = calendarHTML.outerHTML;
+            }
 
         }
 
