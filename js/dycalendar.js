@@ -347,7 +347,7 @@
      * this function will draw the calendar based on user preferences.
      *
      * option = {
-     *  target : "#id"          //(mandatory) for id use #id
+     *  target : "#id|.class"   //(mandatory) for id use #id | for class user .class
      *  type : "calendar-type"  //(optional) values: "today|month" (default "today")
      *  month : "integer"       //(optional) value 0-11, where 0 = January, ... 11 = December (default current month)
      *  year : "integer"        //(optional) example 1990. (default current year)
