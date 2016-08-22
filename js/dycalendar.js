@@ -20,6 +20,9 @@
     //this will be used by the user.
         dycalendar = {},
 
+        //window document
+        document = global.document,
+
         //starting year
         START_YEAR = 1900,
 
@@ -53,33 +56,33 @@
             table, tr, td,
             r, c, count;
 
-        table = global.document.createElement("table");
-        tr = global.document.createElement("tr");
+        table = document.createElement("table");
+        tr = document.createElement("tr");
 
         //create 1st row for the day letters
         for (c = 0; c <= 6; c = c + 1) {
-            td = global.document.createElement("td");
+            td = document.createElement("td");
             td.innerHTML = "SMTWTFS"[c];
             tr.appendChild(td);
         }
         table.appendChild(tr);
 
         //create 2nd row for dates
-        tr = global.document.createElement("tr");
+        tr = document.createElement("tr");
 
         //blank td
         for (c = 0; c <= 6; c = c + 1) {
             if (c === data.firstDayIndex) {
                 break;
             }
-            td = global.document.createElement("td");
+            td = document.createElement("td");
             tr.appendChild(td);
         }
 
         //remaing td of dates for the 2nd row
         count = 1;
         while (c <= 6) {
-            td = global.document.createElement("td");
+            td = document.createElement("td");
             td.innerHTML = count;
             if (data.today.date === count && data.today.monthIndex === data.monthIndex && option.highlighttoday === true) {
                 td.setAttribute("class", "dycalendar-today-date");
@@ -95,13 +98,13 @@
 
         //create remaining rows
         for (r = 3; r <= 7; r = r + 1) {
-            tr = global.document.createElement("tr");
+            tr = document.createElement("tr");
             for(c = 0; c <= 6; c = c + 1) {
                 if (count > data.totaldays) {
                     table.appendChild(tr);
                     return table;
                 }
-                td = global.document.createElement('td');
+                td = document.createElement('td');
                 td.innerHTML = count;
                 if (data.today.date === count && data.today.monthIndex === data.monthIndex && option.highlighttoday === true) {
                     td.setAttribute("class", "dycalendar-today-date");
@@ -135,17 +138,17 @@
         table = createMonthTable(data, option);
 
         //calendar container
-        container = global.document.createElement("div");
+        container = document.createElement("div");
         container.setAttribute("class", "dycalendar-month-container");
 
         //-------------------------- Header ------------------
 
         //header div
-        div = global.document.createElement("div");
+        div = document.createElement("div");
         div.setAttribute("class", "dycalendar-header");
 
         //month span
-        elem = global.document.createElement("span");
+        elem = document.createElement("span");
         elem.setAttribute("class", "dycalendar-span-month-year");
         if (option.monthformat === "mmm") {
             elem.innerHTML = data.monthName + " " + data.year;
@@ -162,7 +165,7 @@
         //-------------------------- Body ------------------
 
         //body div
-        div = global.document.createElement("div");
+        div = document.createElement("div");
         div.setAttribute("class", "dycalendar-body");
         div.appendChild(table);
 
@@ -186,17 +189,17 @@
             div, container, elem;
 
         //calendar container
-        container = global.document.createElement("div");
+        container = document.createElement("div");
         container.setAttribute("class", "dycalendar-today-container");
 
         //-------------------------- Header ------------------
 
         //header div
-        div = global.document.createElement("div");
+        div = document.createElement("div");
         div.setAttribute("class", "dycalendar-header");
 
         //day span
-        elem = global.document.createElement("span");
+        elem = document.createElement("span");
         elem.setAttribute("class", "dycalendar-span-day");
         if (option.dayformat === "ddd") {
             elem.innerHTML = dayName.ddd[data.today.dayIndex];
@@ -213,11 +216,11 @@
         //-------------------------- Body ------------------
 
         //body div
-        div = global.document.createElement("div");
+        div = document.createElement("div");
         div.setAttribute("class", "dycalendar-body");
 
         //date span
-        elem = global.document.createElement("span");
+        elem = document.createElement("span");
         elem.setAttribute("class", "dycalendar-span-date");
         elem.innerHTML = data.today.date;
 
@@ -230,11 +233,11 @@
         //-------------------------- Footer ------------------
 
         //footer div
-        div = global.document.createElement("div");
+        div = document.createElement("div");
         div.setAttribute("class", "dycalendar-footer");
 
         //month span
-        elem = global.document.createElement("span");
+        elem = document.createElement("span");
         elem.setAttribute("class", "dycalendar-span-month-year");
         if (option.monthformat === "mmm") {
             elem.innerHTML = data.monthName + " " + data.year;
@@ -423,8 +426,8 @@
         //draw calendar
         if (targetedElementBy === "id") {
 
-            global.document.getElementById(option.target).innerHTML = null;
-            global.document.getElementById(option.target).appendChild(calendarHTML);
+            document.getElementById(option.target).innerHTML = null;
+            document.getElementById(option.target).appendChild(calendarHTML);
 
         }
 
