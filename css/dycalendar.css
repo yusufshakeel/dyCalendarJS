@@ -43,7 +43,8 @@
     padding : 5px;
 }
 
-.dycalendar-month-container .dycalendar-today-date {
+.dycalendar-month-container .dycalendar-today-date,
+.dycalendar-target-date {
     background-color: #111;
     color : #fff;
     border-radius: 2px;
