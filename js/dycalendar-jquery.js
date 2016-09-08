@@ -12,7 +12,7 @@
  * Date: 2014-08-17 sunday
  */
 /*! dyCalendarJS | (c) 2016 Yusuf Shakeel | https://github.com/yusufshakeel/dyCalendarJS */
-(function(global) {
+(function(global, $) {
 
     "use strict";
 
@@ -56,66 +56,66 @@
             table, tr, td,
             r, c, count;
 
-        table = document.createElement("table");
-        tr = document.createElement("tr");
+        table = $("<table>");
+        tr = $("<tr>");
 
         //create 1st row for the day letters
         for (c = 0; c <= 6; c = c + 1) {
-            td = document.createElement("td");
-            td.innerHTML = "SMTWTFS"[c];
-            tr.appendChild(td);
+            td = $("<td>");
+            td.html("SMTWTFS"[c]);
+            tr.append(td);
         }
-        table.appendChild(tr);
+        table.append(tr);
 
         //create 2nd row for dates
-        tr = document.createElement("tr");
+        tr = $("<tr>");
 
         //blank td
         for (c = 0; c <= 6; c = c + 1) {
             if (c === data.firstDayIndex) {
                 break;
             }
-            td = document.createElement("td");
-            tr.appendChild(td);
+            td = $("<td>");
+            tr.append(td);
         }
 
         //remaing td of dates for the 2nd row
         count = 1;
         while (c <= 6) {
-            td = document.createElement("td");
-            td.innerHTML = count;
+            td = $("<td>");
+            td.html(count);
             if (data.today.date === count && data.today.monthIndex === data.monthIndex && option.highlighttoday === true) {
-                td.setAttribute("class", "dycalendar-today-date");
+                td.addClass("dycalendar-today-date");
             }
             if (option.date === count && option.month === data.monthIndex && option.highlighttargetdate === true) {
-                td.setAttribute("class", "dycalendar-target-date");
+                td.addClass("dycalendar-target-date");
             }
-            tr.appendChild(td);
+            tr.append(td);
             count = count + 1;
             c = c + 1;
         }
-        table.appendChild(tr);
+        table.append(tr);
 
         //create remaining rows
         for (r = 3; r <= 7; r = r + 1) {
-            tr = document.createElement("tr");
+            tr = $("<tr>");
             for(c = 0; c <= 6; c = c + 1) {
                 if (count > data.totaldays) {
-                    table.appendChild(tr);
+                    table.append(tr);
                     return table;
                 }
-                td = document.createElement('td');
-                td.innerHTML = count;
+                td = $("<td>");
+                td.html(count);
                 if (data.today.date === count && data.today.monthIndex === data.monthIndex && option.highlighttoday === true) {
-                    td.setAttribute("class", "dycalendar-today-date");
+                    td.addClass("dycalendar-today-date");
                 }
                 if (option.date === count && option.month === data.monthIndex && option.highlighttargetdate === true) {
-                    td.setAttribute("class", "dycalendar-target-date");
+                    td.addClass("dycalendar-target-date");
                 }
                 count = count + 1;
-                tr.appendChild(td);
+                tr.append(td);
             }
-            table.appendChild(tr);
+            table.append(tr);
         }
 
         return table;
@@ -138,39 +138,39 @@
         table = createMonthTable(data, option);
 
         //calendar container
-        container = document.createElement("div");
-        container.setAttribute("class", "dycalendar-month-container");
+        container = $("<div>");
+        container.addClass("dycalendar-month-container");
 
         //-------------------------- Header ------------------
 
         //header div
-        div = document.createElement("div");
-        div.setAttribute("class", "dycalendar-header");
+        div = $("<div>");
+        div.addClass("dycalendar-header");
 
         //month span
-        elem = document.createElement("span");
-        elem.setAttribute("class", "dycalendar-span-month-year");
+        elem = $("<span>");
+        elem.addClass("dycalendar-span-month-year");
         if (option.monthformat === "mmm") {
-            elem.innerHTML = data.monthName + " " + data.year;
+            elem.html(data.monthName + " " + data.year);
         } else if (option.monthformat === "full") {
-            elem.innerHTML = data.monthNameFull + " " + data.year;
+            elem.html(data.monthNameFull + " " + data.year);
         }
 
         //add month span to header div
-        div.appendChild(elem);
+        div.append(elem);
 
         //add header div to container
-        container.appendChild(div);
+        container.append(div);
 
         //-------------------------- Body ------------------
 
         //body div
-        div = document.createElement("div");
-        div.setAttribute("class", "dycalendar-body");
-        div.appendChild(table);
+        div = $("<div>");
+        div.addClass("dycalendar-body");
+        div.append(table);
 
         //add body div to container div
-        container.appendChild(div);
+        container.append(div);
 
         //return container
         return container;
@@ -189,67 +189,67 @@
             div, container, elem;
 
         //calendar container
-        container = document.createElement("div");
-        container.setAttribute("class", "dycalendar-day-container");
+        container = $("<div>");
+        container.addClass("dycalendar-day-container");
 
         //-------------------------- Header ------------------
 
         //header div
-        div = document.createElement("div");
-        div.setAttribute("class", "dycalendar-header");
+        div = $("<div>");
+        div.addClass("dycalendar-header");
 
         //day span
-        elem = document.createElement("span");
-        elem.setAttribute("class", "dycalendar-span-day");
+        elem = $("<span>");
+        elem.addClass("dycalendar-span-day");
         if (option.dayformat === "ddd") {
-            elem.innerHTML = dayName.ddd[data.targetedDayIndex];
+            elem.html(dayName.ddd[data.targetedDayIndex]);
         } else if (option.dayformat === "full") {
-            elem.innerHTML = dayName.full[data.targetedDayIndex];
+            elem.html(dayName.full[data.targetedDayIndex]);
         }
 
         //add day span to footer div
-        div.appendChild(elem);
+        div.append(elem);
 
         //add header div to container
-        container.appendChild(div);
+        container.append(div);
 
         //-------------------------- Body ------------------
 
         //body div
-        div = document.createElement("div");
-        div.setAttribute("class", "dycalendar-body");
+        div = $("<div>");
+        div.addClass("dycalendar-body");
 
         //date span
-        elem = document.createElement("span");
-        elem.setAttribute("class", "dycalendar-span-date");
-        elem.innerHTML = data.date;
+        elem = $("<span>");
+        elem.addClass("dycalendar-span-date");
+        elem.html(data.date);
 
         //add date span to body div
-        div.appendChild(elem);
+        div.append(elem);
 
         //add body div to container
-        container.appendChild(div);
+        container.append(div);
 
         //-------------------------- Footer ------------------
 
         //footer div
-        div = document.createElement("div");
-        div.setAttribute("class", "dycalendar-footer");
+        div = $("<div>");
+        div.addClass("dycalendar-footer");
 
         //month span
-        elem = document.createElement("span");
-        elem.setAttribute("class", "dycalendar-span-month-year");
+        elem = $("<span>");
+        elem.addClass("dycalendar-span-month-year");
         if (option.monthformat === "mmm") {
-            elem.innerHTML = data.monthName + " " + data.year;
+            elem.html(data.monthName + " " + data.year);
         } else if (option.monthformat === "full") {
-            elem.innerHTML = data.monthNameFull + " " + data.year;
+            elem.html(data.monthNameFull + " " + data.year);
         }
 
         //add month span to footer div
-        div.appendChild(elem);
+        div.append(elem);
 
         //add footer div to container
-        container.appendChild(div);
+        container.append(div);
 
         //return container
         return container;
@@ -354,7 +354,7 @@
         result.targetedDayIndex = idx;
         result.targetedDayName = dateString[0];
         result.targetedDayFullName = dayName.full[idx];
-        
+
         return result;
 
     }
@@ -412,14 +412,6 @@
             //other variables
             i, len, elem, elemArr;
 
-        //find target element by
-        if (option.target[0] === "#") {
-            targetedElementBy = "id";
-        } else if (option.target[0] === ".") {
-            targetedElementBy = "class";
-        }
-        option.target = option.target.substring(1);
-
         //extend user options with predefined options
         option = extendSource(option, defaults);
 
@@ -444,18 +436,7 @@
         }
 
         //draw calendar
-        if (targetedElementBy === "id") {
-
-            document.getElementById(option.target).innerHTML = calendarHTML.outerHTML;
-
-        } else if (targetedElementBy === "class") {
-
-            elemArr = document.getElementsByClassName(option.target);
-            for (i = 0, len = elemArr.length; i < len; i = i + 1) {
-                elemArr[i].innerHTML = calendarHTML.outerHTML;
-            }
-
-        }
+        $(option.target).html(calendarHTML);
 
     };
 
@@ -464,4 +445,5 @@
     //attach to global window object
     global.dycalendar = dycalendar;
 
-}(typeof window !== "undefined" ? window : this));
+}(typeof window !== "undefined" ? window : this,
+typeof jQuery !== "undefined" ? jQuery : undefined));
