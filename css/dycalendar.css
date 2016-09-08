@@ -17,6 +17,39 @@
     border : 1px solid #eee;
 }
 
+
+
+/*================================== DAY CALENDAR ========================*/
+/*
+ * day calendar style
+ *-------------------------------------------------*/
+.dycalendar-day-container {
+    padding : 10px;
+    text-align : center;
+    font-family : Arial;
+}
+
+.dycalendar-day-container div{
+    padding : 0;
+    margin-bottom : 10px;
+}
+
+.dycalendar-day-container .dycalendar-span-day {
+    font-size : 110%;
+}
+
+.dycalendar-day-container .dycalendar-span-date {
+    font-size : 250%;
+}
+
+.dycalendar-day-container .dycalendar-span-month-year {
+    font-size : 90%
+}
+
+/*================================== DAY CALENDAR ENDS HERE ===============*/
+
+
+
 /*================================== MONTH CALENDAR DEFAULT ========================*/
 
 /*
@@ -49,38 +82,6 @@
 }
 
 /*================================== MONTH CALENDAR ENS HERE ===============*/
-
-
-
-/*================================== TODAY CALENDAR ========================*/
-/*
- * today calendar style
- *-------------------------------------------------*/
-.dycalendar-today-container {
-    padding : 10px;
-    text-align : center;
-    font-family : Arial;
-}
-
-.dycalendar-today-container div{
-    padding : 0;
-    margin-bottom : 10px;
-}
-
-.dycalendar-today-container .dycalendar-span-day {
-    font-size : 110%;
-}
-
-.dycalendar-today-container .dycalendar-span-date {
-    font-size : 250%;
-}
-
-.dycalendar-today-container .dycalendar-span-month-year {
-    font-size : 90%
-}
-
-/*================================== TODAY CALENDAR ENDS HERE ===============*/
-
 
 
 
