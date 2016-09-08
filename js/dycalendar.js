@@ -177,20 +177,20 @@
     }
 
     /**
-     * this function will draw Calendar Today
+     * this function will draw Calendar Day
      *
      * @param object data   this contains the calendar data
      * @param object option this is the settings object
      * @return html
      */
-    function drawCalendarToday(data, option) {
+    function drawCalendarDay(data, option) {
 
         var
             div, container, elem;
 
         //calendar container
         container = document.createElement("div");
-        container.setAttribute("class", "dycalendar-today-container");
+        container.setAttribute("class", "dycalendar-day-container");
 
         //-------------------------- Header ------------------
 
@@ -202,9 +202,9 @@
         elem = document.createElement("span");
         elem.setAttribute("class", "dycalendar-span-day");
         if (option.dayformat === "ddd") {
-            elem.innerHTML = dayName.ddd[data.today.dayIndex];
+            elem.innerHTML = dayName.ddd[data.targetedDayIndex];
         } else if (option.dayformat === "full") {
-            elem.innerHTML = dayName.full[data.today.dayIndex];
+            elem.innerHTML = dayName.full[data.targetedDayIndex];
         }
 
         //add day span to footer div
@@ -222,7 +222,7 @@
         //date span
         elem = document.createElement("span");
         elem.setAttribute("class", "dycalendar-span-date");
-        elem.innerHTML = data.today.date;
+        elem.innerHTML = data.date;
 
         //add date span to body div
         div.appendChild(elem);
@@ -277,11 +277,12 @@
      *
      * @param integer year		1900-9999 (optional) if not set will consider
      *                          the current year.
-     * @param intger month		0-11 (optional) 0 = Jan, 1 = Feb, ... 11 = Dec,
+     * @param integer month		0-11 (optional) 0 = Jan, 1 = Feb, ... 11 = Dec,
      *                          if not set will consider the current month.
+     * @param integer date      1-31 (optional)
      * @return boolean|object	if error return false, else calendar detail
      */
-    function getCalendar(year, month) {
+    function getCalendar(year, month, date) {
 
         var
             dateObj = new Date(),
@@ -295,6 +296,13 @@
         if (month > 11 || month < 0) {
             return false;
         }
+        if (date > 31 || date < 1) {
+            return false;
+        }
+
+        result.year = year;
+        result.month = month;
+        result.date = date;
 
         //today
         result.today = {};
@@ -330,13 +338,23 @@
         result.monthName = dateString[1];
         result.monthNameFull = monthName.full[idx];
 
-        result.year = dateString[3];
-
+        //get total days for the month-year
         dateObj.setFullYear(year);
         dateObj.setMonth(month + 1);
         dateObj.setDate(0);
         result.totaldays = dateObj.getDate();
 
+        //get month-year targeted date
+        dateObj.setFullYear(year);
+        dateObj.setMonth(month);
+        dateObj.setDate(date);
+        dateString = dateObj.toString().split(" ");
+
+        idx = dayName.ddd.indexOf(dateString[0]);
+        result.targetedDayIndex = idx;
+        result.targetedDayName = dateString[0];
+        result.targetedDayFullName = dayName.full[idx];
+        
         return result;
 
     }
@@ -348,7 +366,7 @@
      *
      * option = {
      *  target : "#id|.class"   //(mandatory) for id use #id | for class user .class
-     *  type : "calendar-type"  //(optional) values: "today|month" (default "today")
+     *  type : "calendar-type"  //(optional) values: "day|month" (default "day")
      *  month : "integer"       //(optional) value 0-11, where 0 = January, ... 11 = December (default current month)
      *  year : "integer"        //(optional) example 1990. (default current year)
      *  date : "integer"        //(optional) example 1-31. (default current date)
@@ -375,7 +393,7 @@
 
             //default settings
             defaults = {
-                type : "today",
+                type : "day",
                 month : dateObj.getMonth(),
                 year : dateObj.getFullYear(),
                 date : dateObj.getDate(),
@@ -407,16 +425,16 @@
 
         //get calendar HTML
         switch (option.type) {
-        case "today":
+        case "day":
             //get calendar detail
-            calendar = getCalendar(option.year, option.month);
+            calendar = getCalendar(option.year, option.month, option.date);
             //get calendar html
-            calendarHTML = drawCalendarToday(calendar, option);
+            calendarHTML = drawCalendarDay(calendar, option);
             break;
 
         case "month":
             //get calendar detail
-            calendar = getCalendar(option.year, option.month);
+            calendar = getCalendar(option.year, option.month, option.date);
             //get calendar html
             calendarHTML = drawCalendarMonthTable(calendar, option);
             break;

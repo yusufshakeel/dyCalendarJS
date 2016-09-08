@@ -14,26 +14,29 @@
 
 //today calendar
 dycalendar.draw({
-     target: '#dycalendar-today',
-     type: 'today',
-     dayformat: "full",
-     monthformat: "full"
+     target: '#dycalendar-today'
 });
 
 //month calendar
 dycalendar.draw({
      target: '#dycalendar-month',
-     type: 'month',
-     month: 7,
-     year: 2016,
-     highlighttoday: true,
-     monthformat: "full"
+     type: 'month'
+});
+
+//day calendar
+dycalendar.draw({
+     target: '#dycalendar-day',
+     type : "day",
+     date : 21,
+     month : 9,
+     year : 1990,
+     highlighttargetdate : true
 });
 
 //today calendar - with skin
 dycalendar.draw({
      target: '#dycalendar-today-with-skin',
-     type: 'today',
+     type: 'day',
      dayformat: "ddd",
      monthformat: "mmm"
 });
@@ -41,7 +44,7 @@ dycalendar.draw({
 //today calendar - with skin and shadow
 dycalendar.draw({
      target: '#dycalendar-today-with-skin-shadow',
-     type: 'today',
+     type: 'day',
      dayformat: "full",
      monthformat: "full"
 });
