@@ -7,6 +7,9 @@ Check the [release](https://github.com/yusufshakeel/dyCalendarJS/releases) for t
 ### API Documentation
 The documentation is available [here](https://www.dyclassroom.com/dycalendarjs/introduction).
 
+### Tutorial Video
+[Watch the YouTube video](https://www.youtube.com/watch?v=Xnsedp4cl8M).
+
 ### License
 MIT License
 
