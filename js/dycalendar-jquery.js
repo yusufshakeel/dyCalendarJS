@@ -146,6 +146,20 @@
         //header div
         div = $("<div>");
         div.addClass("dycalendar-header");
+        div.attr("data-option", JSON.stringify(option));
+
+        //prev button
+        if (option.prevnextbutton === "show") {
+            elem = $("<span>");
+            elem.addClass("dycalendar-prev-next-btn prev-btn");
+            elem.attr("data-date", option.date);
+            elem.attr("data-month", option.month);
+            elem.attr("data-year", option.year);
+            elem.attr("data-btn", "prev");
+            elem.html("&lt;");
+            //add prev button span to header div
+            div.append(elem);
+        }
 
         //month span
         elem = $("<span>");
@@ -158,6 +172,19 @@
 
         //add month span to header div
         div.append(elem);
+
+        //next button
+        if (option.prevnextbutton === "show") {
+            elem = $("<span>");
+            elem.addClass("dycalendar-prev-next-btn next-btn");
+            elem.attr("data-date", option.date);
+            elem.attr("data-month", option.month);
+            elem.attr("data-year", option.year);
+            elem.attr("data-btn", "next");
+            elem.html("&gt;");
+            //add next button span to header div
+            div.append(elem);
+        }
 
         //add header div to container
         container.append(div);
@@ -359,6 +386,62 @@
 
     }
 
+    /**
+     * this function will handle the on click event.
+     */
+    function onClick () {
+
+        $("body").on("click", ".dycalendar-prev-next-btn", function (e) {
+
+            e.preventDefault();
+
+            var
+                date = $(this).data("date"),
+                month = $(this).data("month"),
+                year = $(this).data("year"),
+                btn = $(this).data("btn"),
+                option = $(this).parent().data("option");
+
+            if (btn === "prev") {
+                month = month - 1;
+                if (month < 0) {
+                    year = year - 1;
+                    month = 11;
+                }
+            }
+            else if (btn === "next") {
+                month = month + 1;
+                if (month > 11) {
+                    year = year + 1;
+                    month = 0;
+                }
+            }
+
+            option.date = date;
+            option.month = month;
+            option.year = year;
+
+            drawCalendar(option);
+
+        });
+
+        $("body").on("click", ".dycalendar-span-month-year", function (e) {
+
+            e.preventDefault();
+
+            var
+                option = $(this).parent().data("option"),
+                dateObj = new Date();
+
+            option.date = dateObj.getDate();
+            option.month = dateObj.getMonth();
+            option.year = dateObj.getFullYear();
+
+            drawCalendar(option);
+
+        });
+    }
+
     //------------------------------ dycalendar.draw() ----------------------
 
     /**
@@ -374,6 +457,7 @@
      *  dayformat : "full"      //(optional) values: "ddd|full" (default "full")
      *  highlighttoday : boolean    //(optional) (default false) if true will highlight today's date
      *  highlighttargetdate : boolean   //(optional) (default false) if true will highlight targeted date of the month year
+     *  prevnextbutton : "hide"         //(optional) (default "hide") (values: "show|hide") if set to "show" it will show the nav button (prev|next)
      * }
      *
      * @param object option     user preferences
@@ -400,20 +484,24 @@
                 monthformat : "full",
                 dayformat : "full",
                 highlighttoday : false,
-                highlighttargetdate : false
-            },
-
-            //variables for creating calendar
-            calendar,
-            calendarHTML,
-            targetedElementBy = "id",
-            targetedClass,
-
-            //other variables
-            i, len, elem, elemArr;
+                highlighttargetdate : false,
+                prevnextbutton : "hide"
+            };
 
         //extend user options with predefined options
         option = extendSource(option, defaults);
+
+        drawCalendar(option);
+    };
+
+    //------------------------------ dycalendar.draw() ends here ------------
+
+    function drawCalendar (option) {
+
+        var
+            //variables for creating calendar
+            calendar,
+            calendarHTML;
 
         //get calendar HTML
         switch (option.type) {
@@ -437,10 +525,10 @@
 
         //draw calendar
         $(option.target).html(calendarHTML);
+    }
 
-    };
-
-    //------------------------------ dycalendar.draw() ends here ------------
+    //events
+    onClick();
 
     //attach to global window object
     global.dycalendar = dycalendar;
