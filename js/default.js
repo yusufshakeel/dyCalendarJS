@@ -75,3 +75,20 @@ dycalendar.draw({
      monthformat: "full",
      highlighttargetdate : true
 });
+
+
+//month calendar prev-next-button - target class
+dycalendar.draw({
+     target: '#dycalendar-month-prev-next-button',
+     type: 'month',
+     prevnextbutton : "show"
+});
+
+//month calendar prev-next-button - target class
+dycalendar.draw({
+     target: '.dycalendar-month-prev-next-button',
+     type: 'month',
+     monthformat: "full",
+     highlighttargetdate : true,
+     prevnextbutton : "show"
+});

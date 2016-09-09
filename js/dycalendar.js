@@ -146,6 +146,20 @@
         //header div
         div = document.createElement("div");
         div.setAttribute("class", "dycalendar-header");
+        div.setAttribute("data-option", JSON.stringify(option));
+
+        //prev button
+        if (option.prevnextbutton === "show") {
+            elem = document.createElement("span");
+            elem.setAttribute("class", "dycalendar-prev-next-btn prev-btn");
+            elem.setAttribute("data-date", option.date);
+            elem.setAttribute("data-month", option.month);
+            elem.setAttribute("data-year", option.year);
+            elem.setAttribute("data-btn", "prev");
+            elem.innerHTML = "&lt;";
+            //add prev button span to header div
+            div.appendChild(elem);
+        }
 
         //month span
         elem = document.createElement("span");
@@ -158,6 +172,19 @@
 
         //add month span to header div
         div.appendChild(elem);
+
+        //next button
+        if (option.prevnextbutton === "show") {
+            elem = document.createElement("span");
+            elem.setAttribute("class", "dycalendar-prev-next-btn next-btn");
+            elem.setAttribute("data-date", option.date);
+            elem.setAttribute("data-month", option.month);
+            elem.setAttribute("data-year", option.year);
+            elem.setAttribute("data-btn", "next");
+            elem.innerHTML = "&gt;";
+            //add prev button span to header div
+            div.appendChild(elem);
+        }
 
         //add header div to container
         container.appendChild(div);
@@ -291,12 +318,15 @@
             idx;
 
         if (year < START_YEAR || year > END_YEAR) {
+            global.console.error("Invalid Year");
             return false;
         }
         if (month > 11 || month < 0) {
+            global.console.error("Invalid Month");
             return false;
         }
         if (date > 31 || date < 1) {
+            global.console.error("Invalid Date");
             return false;
         }
 
@@ -354,9 +384,74 @@
         result.targetedDayIndex = idx;
         result.targetedDayName = dateString[0];
         result.targetedDayFullName = dayName.full[idx];
-        
+
         return result;
 
+    }
+
+    /**
+     * this function will handle the on click event.
+     */
+    function onClick () {
+
+        document.body.onclick = function (e) {
+
+            e.preventDefault();
+
+            //get event object (window.event for IE compatibility)
+            e = global.event || e;
+
+            var
+                //get target dom object reference
+                targetDomObject = e.target || e.srcElement,
+
+                //other variables
+                date, month, year, btn, option, dateObj;
+
+            //prev-next button click
+            //extra checks to make sure object exists and contains the class of interest
+            if ((targetDomObject) && (targetDomObject.classList) && (targetDomObject.classList.contains("dycalendar-prev-next-btn"))) {
+                date = parseInt(targetDomObject.getAttribute("data-date"));
+                month = parseInt(targetDomObject.getAttribute("data-month"));
+                year = parseInt(targetDomObject.getAttribute("data-year"));
+                btn = targetDomObject.getAttribute("data-btn");
+                option = JSON.parse(targetDomObject.parentElement.getAttribute("data-option"));
+
+                if (btn === "prev") {
+                    month = month - 1;
+                    if (month < 0) {
+                        year = year - 1;
+                        month = 11;
+                    }
+                }
+                else if (btn === "next") {
+                    month = month + 1;
+                    if (month > 11) {
+                        year = year + 1;
+                        month = 0;
+                    }
+                }
+
+                option.date = date;
+                option.month = month;
+                option.year = year;
+
+                drawCalendar(option);
+            }
+
+            //month click
+            //extra checks to make sure object exists and contains the class of interest
+            if ((targetDomObject) && (targetDomObject.classList) && (targetDomObject.classList.contains("dycalendar-span-month-year"))) {
+                option = JSON.parse(targetDomObject.parentElement.getAttribute("data-option"));
+                dateObj = new Date();
+
+                option.date = dateObj.getDate();
+                option.month = dateObj.getMonth();
+                option.year = dateObj.getFullYear();
+
+                drawCalendar(option);
+            }
+        };
     }
 
     //------------------------------ dycalendar.draw() ----------------------
@@ -374,6 +469,7 @@
      *  dayformat : "full"      //(optional) values: "ddd|full" (default "full")
      *  highlighttoday : boolean    //(optional) (default false) if true will highlight today's date
      *  highlighttargetdate : boolean   //(optional) (default false) if true will highlight targeted date of the month year
+     *  prevnextbutton : "hide"         //(optional) (default "hide") (values: "show|hide") if set to "show" it will show the nav button (prev|next)
      * }
      *
      * @param object option     user preferences
@@ -383,6 +479,7 @@
 
         //check if option is passed or not
         if(typeof option === "undefined") {
+            global.console.error("Option missing");
             return false;
         }
 
@@ -400,17 +497,33 @@
                 monthformat : "full",
                 dayformat : "full",
                 highlighttoday : false,
-                highlighttargetdate : false
-            },
+                highlighttargetdate : false,
+                prevnextbutton : "hide"
+            };
 
+        //extend user options with predefined options
+        option = extendSource(option, defaults);
+
+        drawCalendar(option);
+
+    };
+
+    //------------------------------ dycalendar.draw() ends here ------------
+
+    /**
+     * this function will draw the calendar inside the target container.
+     */
+    function drawCalendar (option) {
+
+        var
             //variables for creating calendar
             calendar,
             calendarHTML,
             targetedElementBy = "id",
-            targetedClass,
+            targetElem,
 
             //other variables
-            i, len, elem, elemArr;
+            i, len, elemArr;
 
         //find target element by
         if (option.target[0] === "#") {
@@ -418,10 +531,7 @@
         } else if (option.target[0] === ".") {
             targetedElementBy = "class";
         }
-        option.target = option.target.substring(1);
-
-        //extend user options with predefined options
-        option = extendSource(option, defaults);
+        targetElem = option.target.substring(1);
 
         //get calendar HTML
         switch (option.type) {
@@ -440,26 +550,27 @@
             break;
 
         default:
+            global.console.error("Invalid type");
             return false;
         }
 
         //draw calendar
         if (targetedElementBy === "id") {
 
-            document.getElementById(option.target).innerHTML = calendarHTML.outerHTML;
+            document.getElementById(targetElem).innerHTML = calendarHTML.outerHTML;
 
         } else if (targetedElementBy === "class") {
 
-            elemArr = document.getElementsByClassName(option.target);
+            elemArr = document.getElementsByClassName(targetElem);
             for (i = 0, len = elemArr.length; i < len; i = i + 1) {
                 elemArr[i].innerHTML = calendarHTML.outerHTML;
             }
 
         }
+    }
 
-    };
-
-    //------------------------------ dycalendar.draw() ends here ------------
+    //events
+    onClick();
 
     //attach to global window object
     global.dycalendar = dycalendar;
