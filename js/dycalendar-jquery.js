@@ -496,6 +496,9 @@
 
     //------------------------------ dycalendar.draw() ends here ------------
 
+    /**
+     * this function will draw the calendar inside the target container.
+     */
     function drawCalendar (option) {
 
         var
