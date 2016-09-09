@@ -396,8 +396,6 @@
 
         document.body.onclick = function (e) {
 
-            e.preventDefault();
-
             //get event object (window.event for IE compatibility)
             e = global.event || e;
 
