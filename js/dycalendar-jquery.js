@@ -318,12 +318,15 @@
             idx;
 
         if (year < START_YEAR || year > END_YEAR) {
+            global.console.error("Invalid Year");
             return false;
         }
         if (month > 11 || month < 0) {
+            global.console.error("Invalid Month");
             return false;
         }
         if (date > 31 || date < 1) {
+            global.console.error("Invalid Date");
             return false;
         }
 
@@ -467,6 +470,7 @@
 
         //check if option is passed or not
         if(typeof option === "undefined") {
+            global.console.error("Option missing");
             return false;
         }
 
@@ -523,6 +527,7 @@
             break;
 
         default:
+            global.console.error("Invalid type");
             return false;
         }
 
