@@ -188,6 +188,7 @@
     background: -moz-linear-gradient(#3dd175, #2bb063);
     background: -webkit-linear-gradient(#3dd175, #2bb063);
 }
+
 .dycalendar-container.skin-green .dycalendar-today-date,
 .dycalendar-container.skin-green .dycalendar-target-date {
     background-color: #fff;
