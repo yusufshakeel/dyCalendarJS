@@ -114,12 +114,31 @@
 /*================================== DYCALENDAR SKIN =======================*/
 
 /*
+ * calendar skin  (default skin)
+ *-------------------------------------------------*/
+.dycalendar-container.gradient {
+    background: #fff;
+    background: linear-gradient(#fff, #d3d3d3);
+    background: -o-linear-gradient(#fff, #d3d3d3);
+    background: -moz-linear-gradient(#fff, #d3d3d3);
+    background: -webkit-linear-gradient(#fff, #d3d3d3);
+}
+
+/*
  * calendar skin  (skin-black)
  *-------------------------------------------------*/
 .dycalendar-container.skin-black {
     color : #fff;
     background-color: #111;
     border : 0;
+}
+
+.dycalendar-container.skin-black.gradient {
+    background: #111;
+    background: linear-gradient(#555, #111);
+    background: -o-linear-gradient(#555, #111);
+    background: -moz-linear-gradient(#555, #111);
+    background: -webkit-linear-gradient(#555, #111);
 }
 
 .dycalendar-container.skin-black .dycalendar-today-date,
@@ -138,6 +157,14 @@
     border : 0;
 }
 
+.dycalendar-container.skin-blue.gradient {
+    background: #3c99d3;
+    background: linear-gradient(#5ebbf5, #3c99d3);
+    background: -o-linear-gradient(#5ebbf5, #3c99d3);
+    background: -moz-linear-gradient(#5ebbf5, #3c99d3);
+    background: -webkit-linear-gradient(#5ebbf5, #3c99d3);
+}
+
 .dycalendar-container.skin-blue .dycalendar-today-date,
 .dycalendar-container.skin-blue .dycalendar-target-date {
     background-color: #fff;
@@ -154,6 +181,13 @@
     border : 0;
 }
 
+.dycalendar-container.skin-green.gradient {
+    background: #2bb063;
+    background: linear-gradient(#3dd175, #2bb063);
+    background: -o-linear-gradient(#3dd175, #2bb063);
+    background: -moz-linear-gradient(#3dd175, #2bb063);
+    background: -webkit-linear-gradient(#3dd175, #2bb063);
+}
 .dycalendar-container.skin-green .dycalendar-today-date,
 .dycalendar-container.skin-green .dycalendar-target-date {
     background-color: #fff;
@@ -168,6 +202,14 @@
     color : #fff;
     background-color: #975ea4;
     border : 0;
+}
+
+.dycalendar-container.skin-purple.gradient {
+    background: #975ea4;
+    background: linear-gradient(#ca82d7, #975ea4);
+    background: -o-linear-gradient(#ca82d7, #975ea4);
+    background: -moz-linear-gradient(#ca82d7, #975ea4);
+    background: -webkit-linear-gradient(#ca82d7, #975ea4);
 }
 
 .dycalendar-container.skin-purple .dycalendar-today-date,
@@ -186,6 +228,14 @@
     border : 0;
 }
 
+.dycalendar-container.skin-red.gradient {
+    background: #e94d40;
+    background: linear-gradient(#fb6f62, #e94d40);
+    background: -o-linear-gradient(#fb6f62, #e94d40);
+    background: -moz-linear-gradient(#fb6f62, #e94d40);
+    background: -webkit-linear-gradient(#fb6f62, #e94d40);
+}
+
 .dycalendar-container.skin-red .dycalendar-today-date,
 .dycalendar-container.skin-red .dycalendar-target-date {
     background-color: #fff;
@@ -200,6 +250,14 @@
     color : #fff;
     background-color: #343d46;
     border : 0;
+}
+
+.dycalendar-container.skin-spacegray.gradient {
+    background: #343d46;
+    background: linear-gradient(#454e57, #343d46);
+    background: -o-linear-gradient(#454e57, #343d46);
+    background: -moz-linear-gradient(#454e57, #343d46);
+    background: -webkit-linear-gradient(#454e57, #343d46);
 }
 
 .dycalendar-container.skin-spacegray .dycalendar-today-date,
