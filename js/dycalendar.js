@@ -12,12 +12,12 @@
  * Date: 2014-08-17 sunday
  */
 /*! dyCalendarJS | (c) 2016 Yusuf Shakeel | https://github.com/yusufshakeel/dyCalendarJS */
-(function(global) {
+(function (global) {
 
     "use strict";
 
     var
-    //this will be used by the user.
+        //this will be used by the user.
         dycalendar = {},
 
         //window document
@@ -99,7 +99,7 @@
         //create remaining rows
         for (r = 3; r <= 7; r = r + 1) {
             tr = document.createElement("tr");
-            for(c = 0; c <= 6; c = c + 1) {
+            for (c = 0; c <= 6; c = c + 1) {
                 if (count > data.totaldays) {
                     table.appendChild(tr);
                     return table;
@@ -302,12 +302,12 @@
     /**
      * This function will return calendar detail.
      *
-     * @param integer year		1900-9999 (optional) if not set will consider
+     * @param integer year        1900-9999 (optional) if not set will consider
      *                          the current year.
-     * @param integer month		0-11 (optional) 0 = Jan, 1 = Feb, ... 11 = Dec,
+     * @param integer month        0-11 (optional) 0 = Jan, 1 = Feb, ... 11 = Dec,
      *                          if not set will consider the current month.
      * @param integer date      1-31 (optional)
-     * @return boolean|object	if error return false, else calendar detail
+     * @return boolean|object    if error return false, else calendar detail
      */
     function getCalendar(year, month, date) {
 
@@ -353,9 +353,9 @@
         result.today.year = dateString[3];
 
         //get month-year first day
-        dateObj.setFullYear(year);
-        dateObj.setMonth(month);
         dateObj.setDate(1);
+        dateObj.setMonth(month);
+        dateObj.setFullYear(year);
         dateString = dateObj.toString().split(" ");
 
         idx = dayName.ddd.indexOf(dateString[0]);
@@ -392,7 +392,7 @@
     /**
      * this function will handle the on click event.
      */
-    function onClick () {
+    function onClick() {
 
         document.body.onclick = function (e) {
 
@@ -476,7 +476,7 @@
     dycalendar.draw = function (option) {
 
         //check if option is passed or not
-        if(typeof option === "undefined") {
+        if (typeof option === "undefined") {
             global.console.error("Option missing");
             return false;
         }
@@ -488,15 +488,15 @@
 
             //default settings
             defaults = {
-                type : "day",
-                month : dateObj.getMonth(),
-                year : dateObj.getFullYear(),
-                date : dateObj.getDate(),
-                monthformat : "full",
-                dayformat : "full",
-                highlighttoday : false,
-                highlighttargetdate : false,
-                prevnextbutton : "hide"
+                type: "day",
+                month: dateObj.getMonth(),
+                year: dateObj.getFullYear(),
+                date: dateObj.getDate(),
+                monthformat: "full",
+                dayformat: "full",
+                highlighttoday: false,
+                highlighttargetdate: false,
+                prevnextbutton: "hide"
             };
 
         //extend user options with predefined options
@@ -511,7 +511,7 @@
     /**
      * this function will draw the calendar inside the target container.
      */
-    function drawCalendar (option) {
+    function drawCalendar(option) {
 
         var
             //variables for creating calendar
@@ -533,23 +533,23 @@
 
         //get calendar HTML
         switch (option.type) {
-        case "day":
-            //get calendar detail
-            calendar = getCalendar(option.year, option.month, option.date);
-            //get calendar html
-            calendarHTML = drawCalendarDay(calendar, option);
-            break;
+            case "day":
+                //get calendar detail
+                calendar = getCalendar(option.year, option.month, option.date);
+                //get calendar html
+                calendarHTML = drawCalendarDay(calendar, option);
+                break;
 
-        case "month":
-            //get calendar detail
-            calendar = getCalendar(option.year, option.month, option.date);
-            //get calendar html
-            calendarHTML = drawCalendarMonthTable(calendar, option);
-            break;
+            case "month":
+                //get calendar detail
+                calendar = getCalendar(option.year, option.month, option.date);
+                //get calendar html
+                calendarHTML = drawCalendarMonthTable(calendar, option);
+                break;
 
-        default:
-            global.console.error("Invalid type");
-            return false;
+            default:
+                global.console.error("Invalid type");
+                return false;
         }
 
         //draw calendar

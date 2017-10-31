@@ -353,9 +353,9 @@
         result.today.year = dateString[3];
 
         //get month-year first day
-        dateObj.setFullYear(year);
-        dateObj.setMonth(month);
         dateObj.setDate(1);
+        dateObj.setMonth(month);
+        dateObj.setFullYear(year);
         dateString = dateObj.toString().split(" ");
 
         idx = dayName.ddd.indexOf(dateString[0]);
