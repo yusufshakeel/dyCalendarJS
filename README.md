@@ -1,8 +1,17 @@
 # dyCalendarJS
 This is a JavaScript library to create Calendar.
 
-### Download
-Check the [release](https://github.com/yusufshakeel/dyCalendarJS/releases) for the latest update.
+### Status
+
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/dyCalendarJS)
+[![npm version](https://img.shields.io/badge/npm-1.2.0-blue.svg)](https://www.npmjs.com/package/dycalendarjs)
+[![](https://data.jsdelivr.com/v1/package/npm/dycodehighlighter/badge)](https://www.jsdelivr.com/package/npm/dycalendarjs)
+
+### Getting Started
+* Download the [latest release](https://github.com/yusufshakeel/dyCalendarJS/releases) of the project.
+* Clone the repo: `git clone https://github.com/yusufshakeel/dyCalendarJS.git`
+* Install with npm: `npm install dycalendarjs`
+* From jsDelivr CDN: `https://www.jsdelivr.com/package/npm/dycalendarjs`
 
 ### API Documentation
 The documentation is available [here](https://www.dyclassroom.com/dycalendarjs/introduction).
@@ -11,24 +20,9 @@ The documentation is available [here](https://www.dyclassroom.com/dycalendarjs/i
 [Watch the YouTube video](https://www.youtube.com/watch?v=Xnsedp4cl8M).
 
 ### License
-MIT License
+It's free and released under [MIT License](https://github.com/yusufshakeel/dyCodeHighlighter/blob/master/LICENSE) Copyright (c) 2016 Yusuf Shakeel
 
-Copyright (c) 2016 Yusuf Shakeel
+### Donate
+Feeling generous :-) Buy me a cup of tea.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+[Donate via PayPal](https://www.paypal.me/yusufshakeel)
