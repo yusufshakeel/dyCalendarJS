@@ -1,220 +1,297 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>dyCalendarJS</title>
-        <link href="css/dycalendar.min.css" rel="stylesheet" />
-    </head>
-    <body>
+<head>
+    <title>dyCalendarJS</title>
 
-        <h1>dyCalendarJS</h1>
-        <p>
-            This is an open source MIT Licensed project and you can use it in your websites for FREE!
-        </p>
-        <h3>Created by: <a href='https://github.com/yusufshakeel'>Yusuf Shakeel</a></h3>
-        <h4>Get the project code from its <a href='https://github.com/yusufshakeel/dyCalendarJS'>GitHub Repository</a></h4>
+    <!-- twitter bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        <h4>
-            <a href='https://www.youtube.com/watch?v=Xnsedp4cl8M'>Click here</a> to watch the tutorial video.
-        </h4>
+    <!-- dycalendarjs stylesheet -->
+    <link href="css/dycalendar.min.css" rel="stylesheet"/>
+</head>
+<body>
 
-        <h4>
-            <a href='https://www.dyclassroom.com/dycalendarjs/introduction'>Click here</a> for the documentation.
-        </h4>
-        <hr />
+<div class="container">
+    <div class="row">
 
-        <div class="some-class">
-            <h1>Today calendar (default skin)</h1>
-            <div class="calendar-container">
-                <div id="dycalendar-today" class="dycalendar-container"></div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="text-center">
+                <h1>dyCalendarJS</h1>
+                <p>This is a JavaScript library to create Calendar. You can use it in your blog and website.</p>
+
+                <div class="text-center">
+                    <a class="btn btn-default btn-lg" href='https://github.com/yusufshakeel/dyCalendarJS/releases'>Download</a>
+                    <a class="btn btn-default btn-lg" href='https://github.com/yusufshakeel/dyCalendarJS'>GitHub</a>
+                </div>
+
+                <h3>Created by: <a href='https://github.com/yusufshakeel'>Yusuf Shakeel</a></h3>
+
+                <h4><a href='https://www.youtube.com/watch?v=Xnsedp4cl8M'>Click here</a> to watch the tutorial video.</h4>
+                <h4><a href='https://www.dyclassroom.com/dycalendarjs/introduction'>Click here</a> for the documentation.</h4>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default skin)</h1>
-            <div class="calendar-container">
-                <div id="dycalendar-month" class="dycalendar-container"></div>
+            <div class="text-center">
+                <h3>License</h3>
+                <p>It's free and released under <a href="https://github.com/yusufshakeel/dyCalendarJS/blob/master/LICENSE">MIT License</a> Copyright (c) 2016 <a href="https://github.com/yusufshakeel">Yusuf Shakeel</a></p>
             </div>
+
         </div>
 
-        <hr />
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 
-        <div class="some-class">
-            <h1>Day calendar (default skin)</h1>
-            <div class="calendar-container">
-                <div id="dycalendar-day" class="dycalendar-container"></div>
+            <h2 class="text-center">Getting Started</h2>
+            <p>Include the JavaScript and Stylesheet file in your page.</p>
+            <p>Create a <code>div</code> and give it an id like <code>#sample-calendar</code> and the <code>.dycalendar-container</code> class.</p>
+            <p>Call the <code>draw()</code> method of dyCalendarJS to draw the calendar.</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;dyCalendarJS&lt;/title&gt;
+    &lt;link href=&quot;path/to/dycalendar.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;div id=&quot;sample-calendar&quot; class=&quot;dycalendar-container&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;!-- javascript --&gt;
+    &lt;script src=&quot;path/to/dycalendar.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+    dycalendar.draw({
+      target: &apos;#sample-calendar&apos;
+    });
+    &lt;/script&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+        </div>
+
+        <!-- DEMO -->
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+
+            <h1 class="text-center">Demo</h1>
+
+            <div class="some-class">
+                <h2>Today calendar (default skin)</h2>
+                <div class="calendar-container">
+                    <div id="dycalendar-today" class="dycalendar-container"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Today calendar (skin-blue)</h1>
-            <div class="calendar-container">
-                <div id="dycalendar-today-with-skin" class="dycalendar-container skin-blue"></div>
+            <hr/>
+
+            <div class="some-class">
+                <h2>Month calendar (default skin)</h2>
+                <div class="calendar-container">
+                    <div id="dycalendar-month" class="dycalendar-container"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Today calendar (skin-black shadow-default)</h1>
-            <div class="calendar-container">
-                <div id="dycalendar-today-with-skin-shadow" class="dycalendar-container skin-black shadow-default"></div>
+            <hr/>
+
+            <div class="some-class">
+                <h2>Day calendar (default skin)</h2>
+                <div class="calendar-container">
+                    <div id="dycalendar-day" class="dycalendar-container"></div>
+                </div>
             </div>
-        </div>
 
-        <hr />
-
-        <div class="some-class">
-            <h1>Month calendar (default current month) (skin-red)</h1>
-            <div class="calendar-container">
-                <div id="dycalendar-month-with-skin" class="dycalendar-container skin-red"></div>
+            <div class="some-class">
+                <h2>Today calendar (skin-blue)</h2>
+                <div class="calendar-container">
+                    <div id="dycalendar-today-with-skin" class="dycalendar-container skin-blue"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (21st October 1990) (skin-green shadow-default)</h1>
-            <div class="calendar-container">
-                <div id="dycalendar-month-with-skin-shadow" class="dycalendar-container skin-green shadow-default"></div>
+            <div class="some-class">
+                <h2>Today calendar (skin-black shadow-default)</h2>
+                <div class="calendar-container">
+                    <div id="dycalendar-today-with-skin-shadow" class="dycalendar-container skin-black shadow-default"></div>
+                </div>
             </div>
-        </div>
 
-        <hr />
+            <hr/>
 
-        <div class="some-class">
-            <h1>Month Calendar 1 target class = "dycalendar-month"</h1>
-            <div class="dycalendar-month dycalendar-container skin-purple"></div>
-        </div>
-
-        <div class="some-class">
-            <h1>Month Calendar 2 target class = "dycalendar-month"</h1>
-            <div class="dycalendar-month dycalendar-container skin-blue shadow-default"></div>
-        </div>
-
-        <hr />
-
-        <div class="some-class">
-            <h1>Month Calendar with prev-next-button id = "dycalendar-month-prev-next-button"</h1>
-            <div id="dycalendar-month-prev-next-button" class="dycalendar-container skin-green shadow-default"></div>
-        </div>
-
-        <div class="some-class">
-            <h1>Month Calendar with prev-next-button class = "dycalendar-month-prev-next-button"</h1>
-            <div class="dycalendar-month-prev-next-button dycalendar-container skin-red shadow-default"></div>
-        </div>
-
-        <div class="some-class">
-            <h1>Month Calendar with prev-next-button class = "dycalendar-month-prev-next-button"</h1>
-            <div class="dycalendar-month-prev-next-button dycalendar-container skin-purple shadow-default"></div>
-        </div>
-
-        <hr />
-
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge"></div>
+            <div class="some-class">
+                <h2>Month calendar (default current month) (skin-red)</h2>
+                <div class="calendar-container">
+                    <div id="dycalendar-month-with-skin" class="dycalendar-container skin-red"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge shadow-default)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge shadow-default"></div>
+            <div class="some-class">
+                <h2>Month calendar (21st October 1990) (skin-green shadow-default)</h2>
+                <div class="calendar-container">
+                    <div id="dycalendar-month-with-skin-shadow" class="dycalendar-container skin-green shadow-default"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge shadow-black)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge shadow-black"></div>
+            <hr/>
+
+            <div class="some-class">
+                <h2>Month Calendar 1 target class = "dycalendar-month"</h2>
+                <div class="dycalendar-month dycalendar-container skin-purple"></div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge shadow-blue)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge shadow-blue"></div>
+            <div class="some-class">
+                <h2>Month Calendar 2 target class = "dycalendar-month"</h2>
+                <div class="dycalendar-month dycalendar-container skin-blue shadow-default"></div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge shadow-green)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge shadow-green"></div>
+            <hr/>
+
+            <div class="some-class">
+                <h2>Month Calendar with prev-next-button id = "dycalendar-month-prev-next-button"</h2>
+                <div id="dycalendar-month-prev-next-button" class="dycalendar-container skin-green shadow-default"></div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge shadow-purple)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge shadow-purple"></div>
+            <div class="some-class">
+                <h2>Month Calendar with prev-next-button class = "dycalendar-month-prev-next-button"</h2>
+                <div class="dycalendar-month-prev-next-button dycalendar-container skin-red shadow-default"></div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge shadow-red)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge shadow-red"></div>
+            <div class="some-class">
+                <h2>Month Calendar with prev-next-button class = "dycalendar-month-prev-next-button"</h2>
+                <div class="dycalendar-month-prev-next-button dycalendar-container skin-purple shadow-default"></div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge shadow-spacegray)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge shadow-spacegray"></div>
+            <hr/>
+
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge"></div>
+                </div>
             </div>
-        </div>
 
-        <hr />
-
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge default skin gradient)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge gradient"></div>
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge shadow-default)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge shadow-default"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge skin-black gradient)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge skin-black gradient"></div>
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge shadow-black)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge shadow-black"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge skin-blue gradient)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge skin-blue gradient"></div>
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge shadow-blue)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge shadow-blue"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge skin-green gradient)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge skin-green gradient"></div>
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge shadow-green)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge shadow-green"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge skin-purple gradient)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge skin-purple gradient"></div>
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge shadow-purple)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge shadow-purple"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge skin-red gradient)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge skin-red gradient"></div>
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge shadow-red)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge shadow-red"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="some-class">
-            <h1>Month calendar (default current month) (round-edge skin-spacegray gradient)</h1>
-            <div class="calendar-container">
-                <div class="dycalendar-month dycalendar-container round-edge skin-spacegray gradient"></div>
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge shadow-spacegray)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge shadow-spacegray"></div>
+                </div>
             </div>
+
+            <hr/>
+
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge default skin gradient)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge gradient"></div>
+                </div>
+            </div>
+
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge skin-black gradient)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge skin-black gradient"></div>
+                </div>
+            </div>
+
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge skin-blue gradient)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge skin-blue gradient"></div>
+                </div>
+            </div>
+
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge skin-green gradient)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge skin-green gradient"></div>
+                </div>
+            </div>
+
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge skin-purple gradient)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge skin-purple gradient"></div>
+                </div>
+            </div>
+
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge skin-red gradient)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge skin-red gradient"></div>
+                </div>
+            </div>
+
+            <div class="some-class">
+                <h2>Month calendar (default current month) (round-edge skin-spacegray gradient)</h2>
+                <div class="calendar-container">
+                    <div class="dycalendar-month dycalendar-container round-edge skin-spacegray gradient"></div>
+                </div>
+            </div>
+
+        </div>
+        <!--/ DEMO ENDS HERE -->
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <div class="text-center">
+                <h3>Donate</h3>
+                <p>Feeling generous &hearts; Buy me a cup of tea</p>
+                <p><a href="https://www.paypal.me/yusufshakeel">Donate via PayPal</a></p>
+            </div>
+
+            <hr>
+
+            <div class="text-center">
+                <p>Copyright &copy; Yusuf Shakeel</p>
+                <p>MIT License</p>
+            </div>
+
         </div>
 
-        <!-- javascript -->
-        <script src="js/dycalendar.min.js"></script>
-        <script src="js/default.js"></script>
-    </body>
+    </div>
+</div>
+
+<!-- javascript -->
+<script src="js/dycalendar.min.js"></script>
+<script src="js/default.js"></script>
+</body>
 </html>
