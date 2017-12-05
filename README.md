@@ -4,8 +4,8 @@ This is a JavaScript library to create Calendar.
 ### Status
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/dyCalendarJS)
-[![npm version](https://img.shields.io/badge/npm-1.2.0-blue.svg)](https://www.npmjs.com/package/dycalendarjs)
-[![](https://data.jsdelivr.com/v1/package/npm/dycodehighlighter/badge)](https://www.jsdelivr.com/package/npm/dycalendarjs)
+[![npm version](https://img.shields.io/badge/npm-1.2.1-blue.svg)](https://www.npmjs.com/package/dycalendarjs)
+[![](https://data.jsdelivr.com/v1/package/npm/dycalendarjs/badge)](https://www.jsdelivr.com/package/npm/dycalendarjs)
 
 ### Getting Started
 * Download the [latest release](https://github.com/yusufshakeel/dyCalendarJS/releases) of the project.
